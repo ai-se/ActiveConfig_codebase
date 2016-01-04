@@ -1,0 +1,8 @@
+Problem Name: DTLZ3_14_5
+Algorithm Name: DE
+- Generated New Population
+- Ran the algorithm for 5
+- The SBX crossover and mutation parameters are correct
+Best: 8.21788500883
+Worst: 13.7798475829
+Median: 11.701491089

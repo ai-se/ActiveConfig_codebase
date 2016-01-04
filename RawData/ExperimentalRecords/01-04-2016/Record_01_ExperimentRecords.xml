@@ -1,0 +1,194 @@
+<Experiment>
+<Problem name = 'CPM_APACHE'>
+<Algorithm name = 'GALE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>230</NumEvals>
+<RunTime>2.87163996696</RunTime>
+<IBD>0.612178635843</IBD>
+<IBS>0.723485895765</IBS>
+<f1>990.0</f1>
+</Summary></Run>
+</Algorithm>
+<Algorithm name = 'NSGAII'>
+<Run id = '1'>
+<Summary>
+<NumEvals>4000</NumEvals>
+<RunTime>0.610674858093</RunTime>
+<IBD>0.367879442923</IBD>
+<IBS>0.0</IBS>
+<f1>990.0</f1>
+</Summary></Run>
+</Algorithm>
+<Algorithm name = 'DE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>2000</NumEvals>
+<RunTime>0.325116872787</RunTime>
+<IBD>0.367879442923</IBD>
+<IBS>0.0</IBS>
+<f1>990.0</f1>
+</Summary></Run>
+</Algorithm>
+</Problem>
+<Problem name = 'cpm_X264'>
+<Algorithm name = 'GALE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>47</NumEvals>
+<RunTime>1.57860898972</RunTime>
+<IBD>0.416949451235</IBD>
+<IBS>0.0163940648377</IBS>
+<f1>263.887</f1>
+</Summary></Run>
+</Algorithm>
+<Algorithm name = 'NSGAII'>
+<Run id = '1'>
+<Summary>
+<NumEvals>4000</NumEvals>
+<RunTime>0.503650903702</RunTime>
+<IBD>0.367879442736</IBD>
+<IBS>0.0</IBS>
+<f1>247.483</f1>
+</Summary></Run>
+</Algorithm>
+<Algorithm name = 'DE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>2000</NumEvals>
+<RunTime>0.356527090073</RunTime>
+<IBD>0.603181246594</IBD>
+<IBS>0.294681510591</IBS>
+<f1>247.483</f1>
+</Summary></Run>
+</Algorithm>
+</Problem>
+<Problem name = 'CPM_SQL'>
+<Algorithm name = 'GALE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>65</NumEvals>
+<RunTime>3.14811110497</RunTime>
+<IBD>1.0</IBD>
+<IBS>0.424838163039</IBS>
+<f1>13.7676</f1>
+</Summary></Run>
+</Algorithm>
+<Algorithm name = 'NSGAII'>
+<Run id = '1'>
+<Summary>
+<NumEvals>4000</NumEvals>
+<RunTime>0.767425060272</RunTime>
+<IBD>0.367879692386</IBD>
+<IBS>0.0</IBS>
+<f1>12.8351</f1>
+</Summary></Run>
+</Algorithm>
+<Algorithm name = 'DE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>2000</NumEvals>
+<RunTime>0.625332832336</RunTime>
+<IBD>0.442846977201</IBD>
+<IBS>0.226896728801</IBS>
+<f1>12.8351</f1>
+</Summary></Run>
+</Algorithm>
+</Problem>
+<Problem name = 'CPM_LLVM'>
+<Algorithm name = 'GALE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>116</NumEvals>
+<RunTime>1.86680102348</RunTime>
+<IBD>0.403611494081</IBD>
+<IBS>0.0357320271292</IBS>
+<f1>220.8033</f1>
+</Summary></Run>
+</Algorithm>
+<Algorithm name = 'NSGAII'>
+<Run id = '1'>
+<Summary>
+<NumEvals>4000</NumEvals>
+<RunTime>0.49335694313</RunTime>
+<IBD>0.367879452144</IBD>
+<IBS>0.0</IBS>
+<f1>201.5466</f1>
+</Summary></Run>
+</Algorithm>
+<Algorithm name = 'DE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>2000</NumEvals>
+<RunTime>0.357669830322</RunTime>
+<IBD>0.367879452144</IBD>
+<IBS>0.0</IBS>
+<f1>201.5466</f1>
+</Summary></Run>
+</Algorithm>
+</Problem>
+<Problem name = 'CPM_BDBJ'>
+<Algorithm name = 'GALE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>152</NumEvals>
+<RunTime>2949.02046108</RunTime>
+<IBD>2.71828181125</IBD>
+<IBS>0.595071424703</IBS>
+<f1>5274.0</f1>
+</Summary></Run>
+</Algorithm>
+<Algorithm name = 'NSGAII'>
+<Run id = '1'>
+<Summary>
+<NumEvals>4000</NumEvals>
+<RunTime>0.55157494545</RunTime>
+<IBD>0.402362956846</IBD>
+<IBS>0.0344835155087</IBS>
+<f1>2986.0</f1>
+</Summary></Run>
+</Algorithm>
+<Algorithm name = 'DE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>2000</NumEvals>
+<RunTime>0.431100130081</RunTime>
+<IBD>0.991399325493</IBD>
+<IBS>0.162967286928</IBS>
+<f1>2986.0</f1>
+</Summary></Run>
+</Algorithm>
+</Problem>
+<Problem name = 'CPM_BDBC'>
+<Algorithm name = 'GALE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>47</NumEvals>
+<RunTime>2.16270709038</RunTime>
+<IBD>1.2564989787</IBD>
+<IBS>1.10179553058</IBS>
+<f1>0.5204</f1>
+</Summary></Run>
+</Algorithm>
+<Algorithm name = 'NSGAII'>
+<Run id = '1'>
+<Summary>
+<NumEvals>2000</NumEvals>
+<RunTime>0.259182929993</RunTime>
+<IBD>0.387396090629</IBD>
+<IBS>0.00490853453025</IBS>
+<f1>0.3625</f1>
+</Summary></Run>
+</Algorithm>
+<Algorithm name = 'DE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>2000</NumEvals>
+<RunTime>0.32954788208</RunTime>
+<IBD>0.952641263059</IBD>
+<IBS>0.00655456078411</IBS>
+<f1>0.3537</f1>
+</Summary></Run>
+</Algorithm>
+</Problem>
+</Experiment>

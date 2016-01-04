@@ -1,0 +1,8 @@
+Problem Name: DTLZ2_12_3
+Algorithm Name: MOEAD
+- Generated New Population
+- Ran the algorithm for 5
+- The SBX crossover and mutation parameters are correct
+Best: 0.0132975407366
+Median: 0.0162503485506
+Worst: 0.0187439072806

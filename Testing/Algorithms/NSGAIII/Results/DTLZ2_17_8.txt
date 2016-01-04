@@ -1,0 +1,8 @@
+Problem Name: DTLZ2_17_8
+Algorithm Name: NSGA3
+- Generated New Population
+- Ran the algorithm for 5
+- The SBX crossover and mutation parameters are correct
+Best: 0.0166222752438
+Worst: 0.0194910202786
+Median: 0.0182051695886
