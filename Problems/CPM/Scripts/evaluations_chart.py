@@ -5,6 +5,7 @@ def list_files():
     files = [log_directory+file for file in os.listdir(log_directory) if file[-4:]==".txt"]
     return files
 
+
 def get_data(filename):
     filter = [0.1, 0.2, 0.4, 0.8]
     data = {}
@@ -20,6 +21,9 @@ def get_data(filename):
 
     return data
 
+
+import numpy as np
+import matplotlib.pyplot as plt
 data = {}
 left, width = .55, .5
 bottom, height = .25, .5
@@ -30,12 +34,6 @@ for file in files:
     name = file[:-4].split("_")[1]
     data[name] = get_data(file)
 
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Data = evaluation_data()
-
-# print len(Data["apache"]["east_west_where"])
 
 left, width = .55, .5
 bottom, height = .25, .5
@@ -141,9 +139,8 @@ ax6.text(right, 0.5*(bottom+top), 'X264',
         fontsize=11,
         transform=ax6.transAxes)
 
-
-
-plt.figlegend([ r1, r2, r3], [ "Where Exemplar", "Where Random",  "Where East West"], frameon=False, loc='lower center', bbox_to_anchor=(0.5, -0.0145), fancybox=True, ncol=3)
+# Number of evaluations of baseline is equal to Exemplar S_3 that is why baseline values are used
+plt.figlegend([ r1, r2, r3], [ "S_3 Exemplar", "S_1 Random",  "S_2 East West"], frameon=False, loc='lower center', bbox_to_anchor=(0.5, -0.0145), fancybox=True, ncol=3)
 f.text(0.04, 0.5, 'Number of Evaluations', va='center', rotation='vertical', fontsize=11)
 plt.xticks([15, 25, 35, 45], ['10', '20', '40', '80'])
 f.set_size_inches(6.0, 8.5)
