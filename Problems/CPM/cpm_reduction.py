@@ -198,6 +198,9 @@ class cpm_apache_training_reduction(cpm_reduction):
         self.CART = tree.DecisionTreeRegressor()
         self.CART = self.CART.fit(self.training_independent, self.training_dependent)
 
+    def generate_decision_tree(self):
+        #TODO: build it
+
     def validate(self, tsolution):
         solution = [int(round(i, 0)) for i in tsolution]
         if sum(solution) == 0: return False
