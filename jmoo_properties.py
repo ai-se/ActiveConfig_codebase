@@ -37,8 +37,8 @@ from Problems.CPM.cpm_reduction import *
 # JMOO Experimental Definitions
 algorithms = [
               jmoo_GALE(),
-              jmoo_NSGAII(),
-              jmoo_DE()
+              # jmoo_NSGAII(),
+              # jmoo_DE()
               ]
 
 problems =[

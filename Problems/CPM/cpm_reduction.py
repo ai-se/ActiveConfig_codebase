@@ -169,6 +169,18 @@ class cpm_reduction(jmoo_problem):
             assert (False), "BOOM"
             exit()
 
+    def generate_decision_tree(self):
+        from sklearn.externals.six import StringIO
+        filename = "./Problems/CPM/DecisionTrees/" + self.name
+        print "-" *50
+        print self.name
+        print "-" *50
+        with open(filename + ".dot", 'w') as f:
+            f = tree.export_graphviz(self.CART, out_file=f, feature_names=self.header)
+        from os import system
+        system("dot -Tpdf " + filename + ".dot -o " + filename + ".pdf")
+        return
+
     def evalConstraints(prob, input=None):
         return False
 
@@ -197,9 +209,9 @@ class cpm_apache_training_reduction(cpm_reduction):
         self.training_independent, self.training_dependent = self.get_training_data(method=treatment)
         self.CART = tree.DecisionTreeRegressor()
         self.CART = self.CART.fit(self.training_independent, self.training_dependent)
+        self.generate_decision_tree()
 
-    def generate_decision_tree(self):
-        #TODO: build it
+
 
     def validate(self, tsolution):
         solution = [int(round(i, 0)) for i in tsolution]
@@ -231,6 +243,7 @@ class cpm_BDBC(cpm_reduction):
         self.training_independent, self.training_dependent = self.get_training_data(method=treatment)
         self.CART = tree.DecisionTreeRegressor()
         self.CART = self.CART.fit(self.training_independent, self.training_dependent)
+        self.generate_decision_tree()
 
     def validate(self, tsolution):
         solution = [int(round(i, 0)) for i in tsolution]
@@ -269,6 +282,7 @@ class cpm_BDBJ(cpm_reduction):
         self.training_independent, self.training_dependent = self.get_training_data(method=treatment)
         self.CART = tree.DecisionTreeRegressor()
         self.CART = self.CART.fit(self.training_independent, self.training_dependent)
+        self.generate_decision_tree()
 
     def validate(self, tsolution):
         solution = [int(round(i, 0)) for i in tsolution]
@@ -318,6 +332,7 @@ class cpm_LLVM(cpm_reduction):
         self.training_independent, self.training_dependent = self.get_training_data(method=treatment)
         self.CART = tree.DecisionTreeRegressor()
         self.CART = self.CART.fit(self.training_independent, self.training_dependent)
+        self.generate_decision_tree()
 
     def validate(self, tsolution):
         solution = [int(round(i, 0)) for i in tsolution]
@@ -350,6 +365,7 @@ class cpm_SQL(cpm_reduction):
         self.training_independent, self.training_dependent = self.get_training_data(method=treatment)
         self.CART = tree.DecisionTreeRegressor()
         self.CART = self.CART.fit(self.training_independent, self.training_dependent)
+        self.generate_decision_tree()
 
     def validate(self, tsolution):
         solution = [int(round(i, 0)) for i in tsolution]
@@ -390,6 +406,7 @@ class cpm_X264(cpm_reduction):
         self.training_independent, self.training_dependent = self.get_training_data(method=treatment)
         self.CART = tree.DecisionTreeRegressor()
         self.CART = self.CART.fit(self.training_independent, self.training_dependent)
+        self.generate_decision_tree()
 
     def validate(self, tsolution):
         solution = [int(round(i, 0)) for i in tsolution]

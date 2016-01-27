@@ -1,0 +1,34 @@
+<Experiment>
+<Problem name = 'CPM_APACHE'>
+<Algorithm name = 'GALE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>207</NumEvals>
+<RunTime>1.89260601997</RunTime>
+<IBD>0.586646220205</IBD>
+<IBS>0.454336372792</IBS>
+<f1>900.0</f1>
+</Summary></Run>
+</Algorithm>
+<Algorithm name = 'NSGAII'>
+<Run id = '1'>
+<Summary>
+<NumEvals>4000</NumEvals>
+<RunTime>0.540862083435</RunTime>
+<IBD>0.367879442398</IBD>
+<IBS>0.0</IBS>
+<f1>900.0</f1>
+</Summary></Run>
+</Algorithm>
+<Algorithm name = 'DE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>2000</NumEvals>
+<RunTime>0.746633052826</RunTime>
+<IBD>0.367879442398</IBD>
+<IBS>0.0</IBS>
+<f1>900.0</f1>
+</Summary></Run>
+</Algorithm>
+</Problem>
+</Experiment>

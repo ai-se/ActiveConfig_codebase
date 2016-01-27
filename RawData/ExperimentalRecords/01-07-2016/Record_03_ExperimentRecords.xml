@@ -1,0 +1,74 @@
+<Experiment>
+<Problem name = 'CPM_APACHE'>
+<Algorithm name = 'GALE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>71</NumEvals>
+<RunTime>0.726391077042</RunTime>
+<IBD>0.641180389485</IBD>
+<IBS>0.441097651531</IBS>
+<f1>1020.0</f1>
+</Summary></Run>
+</Algorithm>
+</Problem>
+<Problem name = 'cpm_X264'>
+<Algorithm name = 'GALE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>48</NumEvals>
+<RunTime>1.07819890976</RunTime>
+<IBD>0.377344013168</IBD>
+<IBS>0.0275722870845</IBS>
+<f1>254.587</f1>
+</Summary></Run>
+</Algorithm>
+</Problem>
+<Problem name = 'CPM_SQL'>
+<Algorithm name = 'GALE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>47</NumEvals>
+<RunTime>1.72923898697</RunTime>
+<IBD>0.895296118034</IBD>
+<IBS>0.579125664669</IBS>
+<f1>13.7842</f1>
+</Summary></Run>
+</Algorithm>
+</Problem>
+<Problem name = 'CPM_LLVM'>
+<Algorithm name = 'GALE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>62</NumEvals>
+<RunTime>0.689059019089</RunTime>
+<IBD>1.22066374262</IBD>
+<IBS>0.564089631134</IBS>
+<f1>227.75</f1>
+</Summary></Run>
+</Algorithm>
+</Problem>
+<Problem name = 'CPM_BDBJ'>
+<Algorithm name = 'GALE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>69</NumEvals>
+<RunTime>1247.7732029</RunTime>
+<IBD>0.367879441351</IBD>
+<IBS>0.0350417366419</IBS>
+<f1>3154.0</f1>
+</Summary></Run>
+</Algorithm>
+</Problem>
+<Problem name = 'CPM_BDBC'>
+<Algorithm name = 'GALE'>
+<Run id = '1'>
+<Summary>
+<NumEvals>35</NumEvals>
+<RunTime>1.28885889053</RunTime>
+<IBD>0.374712870973</IBD>
+<IBS>0.0431438189837</IBS>
+<f1>0.532</f1>
+</Summary></Run>
+</Algorithm>
+</Problem>
+</Experiment>
