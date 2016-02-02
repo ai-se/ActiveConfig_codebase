@@ -68,6 +68,7 @@ def random_where(filename):
         cluster[-1] = [c[:-1] for c in cluster[-1]]
         from random import choice
         ret.append(choice(cluster[-1]))
+    print "Length of Random Where: ", len(ret)
     return ret, len(cluster_table)
 
 
@@ -465,7 +466,7 @@ class data_container:
 
 def performance_test(dataset, treatment):
     global repeat_name
-    repeats = 20
+    repeats = 5
     scores = []
     saved_times = []
     total_times = []
@@ -550,9 +551,9 @@ def draw(data, name):
 
 def test_cpm_apache():
     problems = [cpm_apache_training_reduction]
-    treatments = [base_line, exemplar_where, east_west_where, random_where]
+    treatments = [median_where, base_line, exemplar_where, east_west_where, random_where]
     global training_percent, testing_percent
-    percents = [10, 20, 30, 40, 50, 60, 70, 80, 90]
+    percents = [40]
     scores = []
     for problem in problems:
         for treatment in treatments:
@@ -570,9 +571,9 @@ def test_cpm_apache():
 
 def test_BDBJ():
     problems = [cpm_BDBJ]
-    treatments = [base_line, exemplar_where, east_west_where, random_where]
+    treatments = [median_where, base_line, exemplar_where, east_west_where, random_where]
     global training_percent, testing_percent
-    percents = [10, 20, 30, 40, 50, 60, 70, 80, 90]
+    percents = [40]
     scores = []
     for problem in problems:
         for treatment in treatments:
@@ -590,9 +591,9 @@ def test_BDBJ():
 
 def test_BDBC():
     problems = [cpm_BDBC]
-    treatments = [base_line, exemplar_where, east_west_where, random_where]
+    treatments = [median_where, base_line, exemplar_where, east_west_where, random_where]
     global training_percent, testing_percent
-    percents = [10, 20, 30, 40, 50, 60, 70, 80, 90]
+    percents = [40]
     scores = []
     for problem in problems:
         for treatment in treatments:
@@ -610,9 +611,9 @@ def test_BDBC():
 
 def test_SQL():
     problems = [cpm_SQL]
-    treatments = [base_line, exemplar_where, east_west_where, random_where]
+    treatments = [median_where, base_line, exemplar_where, east_west_where, random_where]
     global training_percent, testing_percent
-    percents = [10, 20, 30, 40, 50, 60, 70, 80, 90]
+    percents = [40]
     scores = []
     for problem in problems:
         for treatment in treatments:
@@ -630,9 +631,9 @@ def test_SQL():
 
 def test_x264():
     problems = [cpm_X264]
-    treatments = [base_line, exemplar_where, east_west_where, random_where]
+    treatments = [median_where, base_line, exemplar_where, east_west_where, random_where]
     global training_percent, testing_percent
-    percents = [10, 20, 30, 40, 50, 60, 70, 80, 90]
+    percents = [40]
     scores = []
     for problem in problems:
         for treatment in treatments:
@@ -650,9 +651,9 @@ def test_x264():
 
 def test_LLVM():
     problems = [cpm_LLVM]
-    treatments = [base_line, exemplar_where, east_west_where, random_where]
+    treatments = [median_where, base_line, exemplar_where, east_west_where, random_where]
     global training_percent, testing_percent
-    percents = [10, 20, 30, 40, 50, 60, 70, 80, 90]
+    percents = [40]
     scores = []
     for problem in problems:
         for treatment in treatments:
@@ -666,6 +667,57 @@ def test_LLVM():
                                     [x.evaluations for x in temp]])
             scores.append(treatscores)
     draw(scores, problem.__name__)
+
+
+
+def median_where(filename):
+
+    def furthest(one, all_members):
+        """Find the distant point (from the population) from one (point)"""
+        ret = None
+        ret_distance = -1 * 1e10
+        for member in all_members:
+            if equal_list(one, member) is True:
+                continue
+            else:
+                temp = euclidean_distance(one, member)
+                if temp > ret_distance:
+                    ret = member
+                    ret_distance = temp
+        return ret
+
+    def find_x_cord(member, pole1, pole2):
+        member_dec = member[:-1]
+        pole1_dec = pole1[:-1]
+        pole2_dec = pole2[:-1]
+
+        a = euclidean_distance(member_dec, pole1_dec)
+        b = euclidean_distance(member_dec, pole2_dec)
+        c = euclidean_distance(pole1_dec, pole2_dec)
+
+        return [member, (a**2 + c**2 - b**2)//(2*c)]
+
+    from random import choice
+    cluster_table = where_clusterer(filename)
+
+    ret = []
+    for cluster in cluster_table:
+        # Remove the cluster label from the cluster[-1]: members of the population
+        cluster[-1] = [c[:-1] for c in cluster[-1]]
+        # Randomly select one of the members of the cluster
+        one = choice(cluster[-1])
+        east = furthest(one, cluster[-1])
+        west = furthest(east, cluster[-1])
+
+        t_store = []
+        for member in cluster[-1]:
+            t_store.append(find_x_cord(member, east, west))
+        t_store = sorted(t_store, key=lambda x: x[-1])
+        ret.append(t_store[int(len(t_store)/2)][0])
+
+    # print len(ret), 2*len(cluster_table)
+    assert(len(ret) == len(cluster_table)), "Something's wrong"
+    return ret, len(ret)
 
 
 def start_test():
