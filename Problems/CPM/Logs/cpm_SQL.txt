@@ -1,6 +1,2 @@
 training_percent, mean, standard_deviation, saved_time, total_time, technique, evaluations 
-0.4,0.054,0.004,66657.172888,67585.0,64,median_where
-0.4,0.045,0.001,40552.197748,67585.0,1862,base_line
-0.4,0.084,0.003,66737.671288,67585.0,128,exemplar_where
-0.4,0.078,0.001,65720.456908,67585.0,128,east_west_where
-0.4,0.054,0.005,66655.710448,67585.0,64,random_where
+0.4,0.052,0.0,66655.608568,67585.0,64,random_where
