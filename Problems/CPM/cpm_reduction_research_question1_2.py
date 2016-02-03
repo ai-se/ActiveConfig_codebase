@@ -249,12 +249,6 @@ class cpm_apache_training_reduction(CPMReduction):
 
         self.training_independent, self.training_dependent = self.get_training_data(method=treatment)
         self.CART = tree.DecisionTreeRegressor()
-        for ti in xrange(len(self.training_independent)):
-            self.CART = self.CART.fit(self.training_independent[:ti+1], self.training_dependent[:ti+1])
-            print (ti+1), self.test_data()
-
-
-        self.CART = tree.DecisionTreeRegressor()
         self.CART = self.CART.fit(self.training_independent, self.training_dependent)
         self.saved_time = (self.find_total_time() - sum(self.training_dependent))/10**4
 
@@ -285,12 +279,6 @@ class cpm_BDBC(CPMReduction):
         self.header, self.data = read_csv(self.filename, header=True)
 
         self.training_independent, self.training_dependent = self.get_training_data(method=treatment)
-        self.CART = tree.DecisionTreeRegressor()
-        for ti in xrange(len(self.training_independent)):
-            self.CART = self.CART.fit(self.training_independent[:ti+1], self.training_dependent[:ti+1])
-            print (ti+1), self.test_data()
-
-
         self.CART = tree.DecisionTreeRegressor()
         self.CART = self.CART.fit(self.training_independent, self.training_dependent)
         self.saved_time = (self.find_total_time() - sum(self.training_dependent))/10**4
@@ -328,12 +316,6 @@ class cpm_BDBJ(CPMReduction):
         # Read Data
         self.header, self.data = read_csv(self.filename, header=True)
         self.training_independent, self.training_dependent = self.get_training_data(method=treatment)
-        self.CART = tree.DecisionTreeRegressor()
-        for ti in xrange(len(self.training_independent)):
-            self.CART = self.CART.fit(self.training_independent[:ti+1], self.training_dependent[:ti+1])
-            print (ti+1), self.test_data()
-
-
         self.CART = tree.DecisionTreeRegressor()
         self.CART = self.CART.fit(self.training_independent, self.training_dependent)
         self.saved_time = (self.find_total_time() - sum(self.training_dependent))/10**4
@@ -384,13 +366,6 @@ class cpm_LLVM(CPMReduction):
         self.header, self.data = read_csv(self.filename, header=True)
         self.training_independent, self.training_dependent = self.get_training_data(method=treatment)
         self.CART = tree.DecisionTreeRegressor()
-        for ti in xrange(len(self.training_independent)):
-            self.CART = self.CART.fit(self.training_independent[:ti+1], self.training_dependent[:ti+1])
-            print (ti+1), self.test_data()
-
-
-
-        self.CART = tree.DecisionTreeRegressor()
         self.CART = self.CART.fit(self.training_independent, self.training_dependent)
         self.saved_time = (self.find_total_time() - sum(self.training_dependent))/10**4
 
@@ -422,12 +397,6 @@ class cpm_SQL(CPMReduction):
         self.header, self.data = read_csv(self.filename, header=True)
 
         self.training_independent, self.training_dependent = self.get_training_data(method=treatment)
-        self.CART = tree.DecisionTreeRegressor()
-        for ti in xrange(len(self.training_independent)):
-            self.CART = self.CART.fit(self.training_independent[:ti+1], self.training_dependent[:ti+1])
-            print (ti+1), self.test_data()
-
-
         self.CART = tree.DecisionTreeRegressor()
         self.CART = self.CART.fit(self.training_independent, self.training_dependent)
         self.saved_time = (self.find_total_time() - sum(self.training_dependent))/10**4
@@ -469,13 +438,6 @@ class cpm_X264(CPMReduction):
         self.header, self.data = read_csv(self.filename, header=True)
         self.training_independent, self.training_dependent = self.get_training_data(method=treatment)
         self.CART = tree.DecisionTreeRegressor()
-        for ti in xrange(len(self.training_independent)):
-            self.CART = self.CART.fit(self.training_independent[:ti+1], self.training_dependent[:ti+1])
-            print (ti+1), self.test_data()
-
-
-
-        self.CART = tree.DecisionTreeRegressor()
         self.CART = self.CART.fit(self.training_independent, self.training_dependent)
         self.saved_time = (self.find_total_time() - sum(self.training_dependent))/10**4
 
@@ -504,7 +466,7 @@ class data_container:
 
 def performance_test(dataset, treatment):
     global repeat_name
-    repeats = 1
+    repeats = 30
     scores = []
     saved_times = []
     total_times = []
@@ -609,7 +571,7 @@ def test_cpm_apache():
 
 def test_BDBJ():
     problems = [cpm_BDBJ]
-    treatments = [random_where]
+    treatments = [random_where, base_line, east_west_where ]
     global training_percent, testing_percent
     percents = [40]
     scores = []
@@ -764,12 +726,12 @@ def median_where(filename):
 
 
 def start_test():
-    test_cpm_apache()
+    #test_cpm_apache()
     test_BDBC()
     test_BDBJ()
-    test_SQL()
-    test_x264()
-    test_LLVM()
+    #test_SQL()
+    #test_x264()
+    #test_LLVM()
 
 
 if __name__ == "__main__":
