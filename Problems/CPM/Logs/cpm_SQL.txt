@@ -1,2 +1,0 @@
-training_percent, mean, standard_deviation, saved_time, total_time, technique, evaluations 
-0.4,0.052,0.0,66655.608568,67585.0,64,random_where
