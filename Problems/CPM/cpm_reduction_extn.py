@@ -156,6 +156,30 @@ def temp_file_removal():
     os.remove(temp_file_name)
 
 
+def get_hotspot_scores(data):
+
+    import decimal
+    decimal.setcontext(decimal.Context(prec=34))
+    distance_matrix = [[-1 for _ in xrange(len(data))] for _ in xrange(len(data))]
+    from sklearn.metrics import jaccard_similarity_score
+    for i in xrange(len(data)):
+        for j in xrange(len(data)):
+            if distance_matrix[i][j] == -1 and i != j:
+                distance_matrix[i][j] = decimal.Decimal(jaccard_similarity_score(data[i], data[j]))
+                distance_matrix[j][i] = distance_matrix[i][j]
+            elif distance_matrix[i][j] == -1 and i == j:
+                distance_matrix[j][i] = 1
+            else:
+                pass
+    hotspot_scores = [sum(distance_matrix[i]) for i in xrange(len(data))]
+    print "Done calculating hotspot scores"
+    return hotspot_scores
+
+
+
+
+
+
 """ - Used to handle temporary file generation and deletion"""
 
 """ + Global Variables to handle the fixed value experiments for research question 3"""
@@ -175,7 +199,9 @@ class CPMReduction(jmoo_problem):
 
         temp_file_generation(self.header, random_selection)
         training, self.no_of_clusters = method(temp_file_name)
+        self.wrapper_hotspot_scores(temp_file_name, training)
         temp_file_removal()
+        exit()
 
         return [row[:-1] for row in training], [row[-1] for row in training]
 
@@ -222,6 +248,54 @@ class CPMReduction(jmoo_problem):
 
     def evalConstraints(prob, input=None):
         return False
+
+    def wrapper_hotspot_scores(self, filename, selected):
+        from copy import deepcopy
+        copy_selected =  deepcopy(selected)
+        content = open(filename, "r").readlines()[1:] # removing header
+        content = [map(float, c.strip().split(",")) for c in content]
+
+        for c in content: c[-1] = int(c[-1])
+
+        # remove the selected ones
+        rest = []
+        for c in content:
+            equal = False
+            for s in copy_selected:
+                if equal_list(c, s) is True:
+                    equal = True
+                    break
+            if equal is True: copy_selected.remove(c)
+            else: rest.append(c)
+
+        assert(len(selected) + len(rest) == len(content)), "somethign is wrong"
+
+        rest_independent = []
+        rest_dependent = []
+        for r in rest:
+            rest_independent.append(r[:-1])
+            rest_dependent.append(r[-1])
+
+        baseline_independent = [s[:-1] for s in selected]
+        baseline_dependent = [s[-1] for s in selected]
+        hotspots = get_hotspot_scores(rest_independent)
+        hotspots_indices = sorted(range(len(hotspots)), key=lambda k: hotspots[k])
+        for count in xrange(len(hotspots_indices)):
+            hotspot_training_independent = [rest_independent[i] for i in hotspots_indices[:count]]
+            hotspot_training_dependent = [rest_dependent[i] for i in hotspots_indices[:count]]
+
+            new_training_independent = baseline_independent + hotspot_training_independent
+            new_training_dependent = baseline_dependent + hotspot_training_dependent
+
+            cart = tree.DecisionTreeRegressor()
+            cart = cart.fit(new_training_independent, new_training_dependent)
+
+            prediction = [float(x) for x in cart.predict(self.testing_independent)]
+            mre = []
+            for i, j in zip(self.testing_dependent, prediction):
+                mre.append(abs(i - j) / float(i))
+            print "Length: ", len(new_training_dependent), " MRE: ", sum(mre) / len(mre)
+
 
 
 class cpm_apache_training_reduction(CPMReduction):
@@ -475,18 +549,12 @@ def performance_test(dataset, treatment):
     temp_store = []
     for repeat in xrange(repeats):
         repeat_name = repeat
-        # print repeat, " ",
-        # print "Dataset: ", dataset.__name__, " Repeats: ", repeats,
-        # print " Treatment: ", treatment.__name__, "Training Percent: ", training_percent,
-        # print ".",
         p = dataset(treatment=treatment)
         saved_times.append(p.saved_time)
         total_times.append(p.find_total_time())
         temp_store.append(p.test_data())
         evaluations.append(p.no_of_clusters)
 
-    # import pdb
-    # pdb.set_trace()
     assert(int(sum(total_times)/len(total_times)) == int(total_times[0])), "Something's wrong"
     scores.append(data_container(training_percent, temp_store, sum(saved_times)/len(saved_times), sum(total_times)/len(total_times), sum(evaluations)/len(evaluations)))
     return scores
@@ -669,7 +737,6 @@ def test_LLVM():
     draw(scores, problem.__name__)
 
 
-
 def median_where(filename):
 
     def furthest(one, all_members):
@@ -720,18 +787,13 @@ def median_where(filename):
     return ret, len(ret)
 
 
-
-
-
-
-
 def start_test():
-    test_cpm_apache()
-    test_BDBC()
-    test_BDBJ()
+    # test_cpm_apache()
+    # test_BDBC()
+    # test_BDBJ()
     test_SQL()
-    test_x264()
-    test_LLVM()
+    # test_x264()
+    # test_LLVM()
 
 
 if __name__ == "__main__":
