@@ -146,5 +146,5 @@ f.text(0.04, 0.5, 'Standard Deviation', va='center', rotation='vertical', fontsi
 plt.xlabel("Percentage of Data")
 # plt.subplot_tool()
 # f.tight_layout()
-plt.savefig('Variance.eps', format='eps')
+plt.savefig('Variance.eps', bbox_inches='tight', format='eps')
 # plt.show()

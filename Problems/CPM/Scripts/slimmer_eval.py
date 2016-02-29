@@ -76,4 +76,4 @@ plt.show()
 
 
 
-plt.savefig('evaluation_graph_slimmer.eps', format='eps')
+plt.savefig('evaluation_graph_slimmer.eps', bbox_inches='tight', format='eps')
