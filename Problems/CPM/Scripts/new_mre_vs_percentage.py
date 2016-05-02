@@ -1,6 +1,6 @@
 def median_mre_scores():
     def list_files():
-        log_directory = "../Logs/"
+        log_directory = "../NewLogs/"
         import os
         files = [log_directory+file for file in os.listdir(log_directory) if file[-4:]==".txt"]
         return files
@@ -45,9 +45,9 @@ ax1.plot(x_axis, median_mre_scores()["apache"]["exemplar_where"], 'ko-', color='
 ax1.plot(x_axis, median_mre_scores()["apache"]["random_where"], 'kv-', color='#636363')
 ax1.plot(x_axis, median_mre_scores()["apache"]["east_west_where"], 'kx-', color='#969696')
 ax1.plot(x_axis, median_mre_scores()["apache"]["base_line"], 'kx-', color='#252525')
-ax1.set_xlim(0.05, 0.95)
-ax1.set_ylim(0.0, 30)
-ax1.set_yticks(np.arange(0, 30, 10))
+# ax1.set_xlim(0.05, 0.95)
+# ax1.set_ylim(0.0, 30)
+# ax1.set_yticks(np.arange(0, 30, 10))
 ax1.text(right, 0.5*(bottom+top), 'Apache',
         horizontalalignment='center',
         verticalalignment='center',
@@ -57,10 +57,10 @@ ax1.text(right, 0.5*(bottom+top), 'Apache',
 # ax1.set_ylabel("MRE")
 
 # plt.subplot(3, 2, 2)
-ax2.plot(x_axis, median_mre_scores()["BDBC"]["exemplar_where"], 'ko-', color='#cccccc')
-ax2.plot(x_axis, median_mre_scores()["BDBC"]["random_where"], 'kv-', color='#636363')
-ax2.plot(x_axis, median_mre_scores()["BDBC"]["east_west_where"], 'kx-', color='#969696')
-ax2.plot(x_axis, median_mre_scores()["BDBC"]["base_line"], 'kx-', color='#252525')
+ax2.plot(x_axis, median_mre_scores()["apache"]["exemplar_where"], 'ko-', color='#cccccc')
+ax2.plot(x_axis, median_mre_scores()["apache"]["random_where"], 'kv-', color='#636363')
+ax2.plot(x_axis, median_mre_scores()["apache"]["east_west_where"], 'kx-', color='#969696')
+ax2.plot(x_axis, median_mre_scores()["apache"]["base_line"], 'kx-', color='#252525')
 # ax2.set_title('Berkeley DB C')
 ax2.set_xlim(0.05, 0.95)
 ax2.set_yticks(np.arange(0, 180, 40))
@@ -75,13 +75,13 @@ ax2.text(right, 0.5*(bottom+top), 'BDBC',
         transform=ax2.transAxes)
 
 # plt.subplot(3, 2, 3)
-ax3.plot(x_axis, median_mre_scores()["BDBJ"]["exemplar_where"], 'ko-', color='#cccccc')
-ax3.plot(x_axis, median_mre_scores()["BDBJ"]["random_where"], 'kv-', color='#636363')
-ax3.plot(x_axis, median_mre_scores()["BDBJ"]["east_west_where"], 'kx-', color='#969696')
-ax3.plot(x_axis, median_mre_scores()["BDBJ"]["base_line"], 'kx-', color='#252525')
-ax3.set_ylim(0.0, 40)
-ax3.set_yticks(np.arange(0, 40, 10))
-ax3.set_xlim(0.05, 0.95)
+ax3.plot(x_axis, median_mre_scores()["apache"]["exemplar_where"], 'ko-', color='#cccccc')
+ax3.plot(x_axis, median_mre_scores()["apache"]["random_where"], 'kv-', color='#636363')
+ax3.plot(x_axis, median_mre_scores()["apache"]["east_west_where"], 'kx-', color='#969696')
+ax3.plot(x_axis, median_mre_scores()["apache"]["base_line"], 'kx-', color='#252525')
+# ax3.set_ylim(0.0, 40)
+# ax3.set_yticks(np.arange(0, 40, 10))
+# ax3.set_xlim(0.05, 0.95)
 # ax3.set_xlabel("Training Data (% of Data)")
 # ax3.set_ylabel("MRE")
 ax3.text(right, 0.5*(bottom+top), 'BDBJ',
@@ -92,12 +92,12 @@ ax3.text(right, 0.5*(bottom+top), 'BDBJ',
         transform=ax3.transAxes)
 
 # plt.subplot(3, 2, 4)
-ax4.plot(x_axis, median_mre_scores()["X264"]["exemplar_where"], 'ko-', color='#cccccc')
-ax4.plot(x_axis, median_mre_scores()["X264"]["random_where"], 'kv-', color='#636363')
-ax4.plot(x_axis, median_mre_scores()["X264"]["east_west_where"], 'kx-', color='#969696')
-ax4.plot(x_axis, median_mre_scores()["X264"]["base_line"], 'kx-', color='#252525')
-ax4.set_ylim(-1, 18)
-ax4.set_xlim(0.05, 0.95)
+ax4.plot(x_axis, median_mre_scores()["apache"]["exemplar_where"], 'ko-', color='#cccccc')
+ax4.plot(x_axis, median_mre_scores()["apache"]["random_where"], 'kv-', color='#636363')
+ax4.plot(x_axis, median_mre_scores()["apache"]["east_west_where"], 'kx-', color='#969696')
+ax4.plot(x_axis, median_mre_scores()["apache"]["base_line"], 'kx-', color='#252525')
+# ax4.set_ylim(-1, 18)
+# ax4.set_xlim(0.05, 0.95)
 # ax4.set_ylabel("MRE")
 ax4.text(right, 0.5*(bottom+top), 'X264',
         horizontalalignment='center',
@@ -107,13 +107,13 @@ ax4.text(right, 0.5*(bottom+top), 'X264',
         transform=ax6.transAxes)
 
 # plt.subplot(3, 2, 5)
-ax5.plot(x_axis, median_mre_scores()["SQL"]["exemplar_where"], 'ko-', color='#cccccc')
-ax5.plot(x_axis, median_mre_scores()["SQL"]["random_where"], 'kv-', color='#636363')
-ax5.plot(x_axis, median_mre_scores()["SQL"]["east_west_where"], 'kx-', color='#969696')
-ax5.plot(x_axis, median_mre_scores()["SQL"]["base_line"], 'kx-', color='#252525')
-ax5.set_xlim(0.05, 0.95)
-ax5.set_ylim(0, 13)
-ax5.set_yticks(np.arange(0, 13, 5))
+ax5.plot(x_axis, median_mre_scores()["apache"]["exemplar_where"], 'ko-', color='#cccccc')
+ax5.plot(x_axis, median_mre_scores()["apache"]["random_where"], 'kv-', color='#636363')
+ax5.plot(x_axis, median_mre_scores()["apache"]["east_west_where"], 'kx-', color='#969696')
+ax5.plot(x_axis, median_mre_scores()["apache"]["base_line"], 'kx-', color='#252525')
+# ax5.set_xlim(0.05, 0.95)
+# ax5.set_ylim(0, 13)
+# ax5.set_yticks(np.arange(0, 13, 5))
 # ax5.set_ylabel("MRE")
 ax5.text(right, 0.5*(bottom+top), 'SQL',
         horizontalalignment='center',
@@ -123,13 +123,13 @@ ax5.text(right, 0.5*(bottom+top), 'SQL',
         transform=ax5.transAxes)
 
 # plt.subplot(3, 2, 6)
-ax6.plot(x_axis, median_mre_scores()["LLVM"]["exemplar_where"], 'ko-', color='#cccccc')
-ax6.plot(x_axis, median_mre_scores()["LLVM"]["random_where"], 'kv-', color='#636363')
-ax6.plot(x_axis, median_mre_scores()["LLVM"]["east_west_where"], 'kx-', color='#969696')
-ax6.plot(x_axis, median_mre_scores()["LLVM"]["base_line"], 'kx-', color='#252525')
-ax6.set_xlim(0.05, 0.95)
-ax6.set_ylim(0, 10)
-ax6.set_yticks(np.arange(0, 10, 5))
+ax6.plot(x_axis, median_mre_scores()["apache"]["exemplar_where"], 'ko-', color='#cccccc')
+ax6.plot(x_axis, median_mre_scores()["apache"]["random_where"], 'kv-', color='#636363')
+ax6.plot(x_axis, median_mre_scores()["apache"]["east_west_where"], 'kx-', color='#969696')
+ax6.plot(x_axis, median_mre_scores()["apache"]["base_line"], 'kx-', color='#252525')
+# ax6.set_xlim(0.05, 0.95)
+# ax6.set_ylim(0, 10)
+# ax6.set_yticks(np.arange(0, 10, 5))
 # ax6.set_ylabel("MRE")
 ax6.text(right, 0.5*(bottom+top), 'LLVM',
         horizontalalignment='center',
@@ -147,5 +147,5 @@ f.text(0.04, 0.5, 'MRE', va='center', rotation='vertical', fontsize=11)
 plt.xlabel("Percentage of Data")
 # plt.subplot_tool()
 # f.tight_layout()
-plt.savefig('SamplingAccuracy.eps', format='eps')
+plt.savefig('NewSamplingAccuracy.eps', format='eps')
 # plt.show()

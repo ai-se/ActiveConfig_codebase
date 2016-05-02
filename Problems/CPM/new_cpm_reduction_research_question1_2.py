@@ -575,9 +575,9 @@ def test_cpm_apache():
 
 def test_BDBJ():
     problems = [cpm_BDBJ]
-    treatments = [random_where, base_line, east_west_where ]
+    treatments = [random_where, east_west_where, exemplar_where, base_line]
     global training_percent, testing_percent
-    percents = [40]
+    percents = [10*i for i in xrange(1, 10)]
     scores = []
     for problem in problems:
         for treatment in treatments:
@@ -595,9 +595,9 @@ def test_BDBJ():
 
 def test_BDBC():
     problems = [cpm_BDBC]
-    treatments = [random_where]
+    treatments = [random_where, east_west_where, exemplar_where, base_line]
     global training_percent, testing_percent
-    percents = [40]
+    percents = [10*i for i in xrange(1, 10)]
     scores = []
     for problem in problems:
         for treatment in treatments:
@@ -615,9 +615,9 @@ def test_BDBC():
 
 def test_SQL():
     problems = [cpm_SQL]
-    treatments = [random_where]
+    treatments = [random_where, east_west_where, exemplar_where, base_line]
     global training_percent, testing_percent
-    percents = [40]
+    percents = [10*i for i in xrange(1, 10)]
     scores = []
     for problem in problems:
         for treatment in treatments:
@@ -635,9 +635,9 @@ def test_SQL():
 
 def test_x264():
     problems = [cpm_X264]
-    treatments = [random_where]
+    treatments = [random_where, east_west_where, exemplar_where, base_line]
     global training_percent, testing_percent
-    percents = [40]
+    percents = [10*i for i in xrange(1, 10)]
     scores = []
     for problem in problems:
         for treatment in treatments:
@@ -655,9 +655,9 @@ def test_x264():
 
 def test_LLVM():
     problems = [cpm_LLVM]
-    treatments = [random_where]
+    treatments = [random_where, east_west_where, exemplar_where, base_line]
     global training_percent, testing_percent
-    percents = [40]
+    percents = [10*i for i in xrange(1, 10)]
     scores = []
     for problem in problems:
         for treatment in treatments:
@@ -730,12 +730,12 @@ def median_where(filename):
 
 
 def start_test():
-    test_cpm_apache()
+    # test_cpm_apache()
     # test_BDBC()
     # test_BDBJ()
     # test_SQL()
-    # test_x264()
-    # test_LLVM()
+    test_x264()
+    test_LLVM()
 
 
 if __name__ == "__main__":

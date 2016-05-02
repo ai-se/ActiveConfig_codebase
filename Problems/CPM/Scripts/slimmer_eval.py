@@ -50,10 +50,10 @@ ind = np.arange(0, 12, 2)  # the x locations for the groups
 width = 0.35       # the width of the bars
 
 plt, ax = plt.subplots()
-ex_where = ax.bar(ind, transform_data['base_line'], width, color='r')
+ex_where = ax.bar(ind, transform_data['base_line'], width, color='#cccccc')
 
-r_where = ax.bar(ind+width, transform_data['random_where'], width, color='y')
-ew_where = ax.bar(ind+2*width, transform_data['east_west_where'], width, color='g')
+r_where = ax.bar(ind+width, transform_data['random_where'], width, color='#969696')
+ew_where = ax.bar(ind+2*width, transform_data['east_west_where'], width, color='#525252')
 
 # add some text for labels, title and axes ticks
 ax.set_ylabel('Number of Evaluations')
@@ -62,15 +62,6 @@ ax.set_xticklabels( ('Apache', 'BDBC', 'BDBJ', 'LLVM', 'SQL', 'X264') )
 
 # ax.legend( (ex_where[0], r_where[0], ew_where[0]), ('Where Exemplar', 'Where Random', 'Where East West') )
 plt.legend([r_where[0], ew_where[0], ex_where[0]], [r'$S_1:Random$', r'$S_2:East West$', r'$S_3:Exemplar$'], frameon=False, loc='lower center', bbox_to_anchor=(0.5, -0.0145), fancybox=True, ncol=3)
-# def autolabel(rects):
-#     # attach some text labels
-#     for rect in rects:
-#         height = rect.get_height()
-#         ax.text(rect.get_x()+rect.get_width()/2., 1.05*height, '%d'%int(height),
-#                 ha='center', va='bottom')
-#
-# autolabel(rects1)
-# autolabel(rects2)
 
 plt.show()
 
