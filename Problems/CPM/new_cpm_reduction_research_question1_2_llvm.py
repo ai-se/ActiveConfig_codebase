@@ -731,7 +731,7 @@ def median_where(filename):
 
 def start_test():
     # test_cpm_apache()
-    # test_BDBC()
+    test_BDBC()
     # test_BDBJ()
     # test_SQL()
     # test_x264()
