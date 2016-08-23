@@ -39,7 +39,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 x_axis = [0.1 * i for i in xrange(1, 10)]
 
-f, (ax1, ax2, ax3, ax4, ax5, ax6) = plt.subplots(6, 1, sharex='col')
+f, ((ax1, ax2, ax3), (ax4, ax5, ax6)) = plt.subplots(2, 3)
 # plt.subplot(3, 2, 1)
 ax1.plot(x_axis, median_mre_scores()["apache"]["exemplar_where"], 'ko-', color='r')
 ax1.plot(x_axis, median_mre_scores()["apache"]["random_where"], 'kv-', color='y')
@@ -48,10 +48,10 @@ ax1.plot(x_axis, median_mre_scores()["apache"]["base_line"], 'kx-', color='b')
 ax1.set_xlim(0.05, 0.95)
 ax1.set_ylim(0.0, 30)
 ax1.set_yticks(np.arange(0, 30, 10))
-ax1.text(right, 0.5*(bottom+top), 'Apache',
+ax1.text(left, 1.43*top, 'Apache',
         horizontalalignment='center',
         verticalalignment='center',
-        rotation=270,
+        rotation=0,
         fontsize=11,
         transform=ax1.transAxes)
 # ax1.set_ylabel("MRE")
@@ -64,12 +64,12 @@ ax2.plot(x_axis, median_mre_scores()["BDBC"]["base_line"], 'kx-', color='b')
 # ax2.set_title('Berkeley DB C')
 ax2.set_xlim(0.05, 0.95)
 # ax2.set_ylim(-5, 70)
-ax2.set_yticks(np.arange(0, 300, 100))
+ax2.set_yticks(np.arange(0, 50, 10))
 # ax2.set_ylabel("MRE")
-ax2.text(right, 0.5*(bottom+top), 'BDBC',
+ax2.text(left, 1.43*top, 'BDBC',
         horizontalalignment='center',
         verticalalignment='center',
-        rotation=270,
+        rotation=0,
         fontsize=11,
         transform=ax2.transAxes)
 
@@ -78,15 +78,15 @@ ax3.plot(x_axis, median_mre_scores()["BDBJ"]["exemplar_where"], 'ko-', color='r'
 ax3.plot(x_axis, median_mre_scores()["BDBJ"]["random_where"], 'kv-', color='y')
 ax3.plot(x_axis, median_mre_scores()["BDBJ"]["east_west_where"], 'kx-', color='g')
 ax3.plot(x_axis, median_mre_scores()["BDBJ"]["base_line"], 'kx-', color='b')
-ax3.set_ylim(0.0, 40)
+# ax3.set_ylim(0.0, 40)
 ax3.set_yticks(np.arange(0, 40, 10))
 ax3.set_xlim(0.05, 0.95)
 # ax3.set_xlabel("Training Data (% of Data)")
 # ax3.set_ylabel("MRE")
-ax3.text(right, 0.5*(bottom+top), 'BDBJ',
+ax3.text(left, 1.43*top, 'BDBJ',
         horizontalalignment='center',
         verticalalignment='center',
-        rotation=270,
+        rotation=0,
         fontsize=11,
         transform=ax3.transAxes)
 
@@ -98,10 +98,10 @@ ax4.plot(x_axis, median_mre_scores()["X264"]["base_line"], 'kx-', color='b')
 ax4.set_ylim(-1, 18)
 ax4.set_xlim(0.05, 0.95)
 # ax4.set_ylabel("MRE")
-ax4.text(right, 0.5*(bottom+top), 'X264',
+ax4.text(left, 1.43*top, 'X264',
         horizontalalignment='center',
         verticalalignment='center',
-        rotation=270,
+        rotation=0,
         fontsize=11,
         transform=ax6.transAxes)
 
@@ -114,10 +114,10 @@ ax5.set_xlim(0.05, 0.95)
 ax5.set_ylim(0, 13)
 ax5.set_yticks(np.arange(0, 13, 5))
 # ax5.set_ylabel("MRE")
-ax5.text(right, 0.5*(bottom+top), 'SQL',
+ax5.text(left, 1.43*top, 'SQL',
         horizontalalignment='center',
         verticalalignment='center',
-        rotation=270,
+        rotation=0,
         fontsize=11,
         transform=ax5.transAxes)
 
@@ -127,23 +127,24 @@ ax6.plot(x_axis, median_mre_scores()["LLVM"]["random_where"], 'kv-', color='y')
 ax6.plot(x_axis, median_mre_scores()["LLVM"]["east_west_where"], 'kx-', color='g')
 ax6.plot(x_axis, median_mre_scores()["LLVM"]["base_line"], 'kx-', color='b')
 ax6.set_xlim(0.05, 0.95)
-ax6.set_ylim(0, 10)
+# ax6.set_ylim(0, 10)
 ax6.set_yticks(np.arange(0, 10, 5))
 # ax6.set_ylabel("MRE")
-ax6.text(right, 0.5*(bottom+top), 'LLVM',
+ax6.text(left, 1.43*top, 'LLVM',
         horizontalalignment='center',
         verticalalignment='center',
-        rotation=270,
+        rotation=0,
         fontsize=11,
         transform=ax4.transAxes)
 
 # plt.subplots_adjust(left=0.35, bottom=0.04, right=0.90, top=0.97, wspace=0.10, hspace=0.10)
-plt.figlegend([ax1.lines[2], ax1.lines[1], ax1.lines[0], ax1.lines[3]], [ r'$S_1-Random$', r'$S_2-East West$', r'$S_3-Exemplar$', r'$Baseline$'], frameon=False, loc='lower center', bbox_to_anchor=(0.5, -0.025), fancybox=True, ncol=2)
+plt.figlegend([ax1.lines[2], ax1.lines[1], ax1.lines[0], ax1.lines[3]], [ r'$S_1-Random$', r'$S_2-East West$', r'$S_3-Exemplar$', r'$Baseline$'], frameon=False, loc='lower center', bbox_to_anchor=(0.48, -0.025), fancybox=True, ncol=4)
 plt.xticks([.2, .4, .6, .8], ['20', '40', '60', '80'])
-f.set_size_inches(5, 9)
-f.subplots_adjust(wspace=0, hspace=0)
+f.set_size_inches(9, 6)
+f.subplots_adjust(wspace=0.2, hspace=0.25)
 f.text(0.04, 0.5, 'Standard Deviation', va='center', rotation='vertical', fontsize=11)
-plt.xlabel("Percentage of Data")
+f.text(0.40, 0.05, 'Percentage of Data', va='center',  fontsize=13)
+#plt.xlabel("Percentage of Data")
 # plt.subplot_tool()
 # f.tight_layout()
 plt.savefig('Variance.eps', bbox_inches='tight', format='eps')
