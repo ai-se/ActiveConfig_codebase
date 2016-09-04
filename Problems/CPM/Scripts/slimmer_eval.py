@@ -61,7 +61,7 @@ ax.set_xticks(ind+width)
 ax.set_xticklabels( ('Apache', 'BDBC', 'BDBJ', 'LLVM', 'SQL', 'X264') )
 
 # ax.legend( (ex_where[0], r_where[0], ew_where[0]), ('Where Exemplar', 'Where Random', 'Where East West') )
-plt.legend([ex_where[0], r_where[0], ew_where[0]], [r'$S_3-Exemplar$', r'$S_1-Random$', r'$S_2-East West$'], frameon=False, loc='lower center', bbox_to_anchor=(0.5, -0.0145), fancybox=True, ncol=3)
+plt.legend([ex_where[0], r_where[0], ew_where[0]], [r'$S_3$', r'$S_1$', r'$S_2$'], frameon=False, loc='lower center', bbox_to_anchor=(0.5, -0.0145), fancybox=True, ncol=3)
 # def autolabel(rects):
 #     # attach some text labels
 #     for rect in rects:

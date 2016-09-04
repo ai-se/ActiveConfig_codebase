@@ -139,7 +139,7 @@ ax6.text(left, 1.43*top, 'LLVM',
         transform=ax4.transAxes)
 
 # plt.subplots_adjust(left=0.35, bottom=0.04, right=0.90, top=0.97, wspace=0.10, hspace=0.10)
-plt.figlegend([ax1.lines[2], ax1.lines[1], ax1.lines[0], ax1.lines[3]], [ r'$S_1-Random$', r'$S_2-East West$', r'$S_3-Exemplar$', r'$Baseline$'], frameon=False, loc='lower center', bbox_to_anchor=(0.48, -0.025), fancybox=True, ncol=4)
+plt.figlegend([ax1.lines[2], ax1.lines[1], ax1.lines[0], ax1.lines[3]], [ r'$S_1$', r'$S_2$', r'$S_3$', r'$Baseline$'], frameon=False, loc='lower center', bbox_to_anchor=(0.48, -0.025), fancybox=True, ncol=4)
 plt.xticks([.2, .4, .6, .8], ['20', '40', '60', '80'])
 f.set_size_inches(9, 6)
 f.subplots_adjust(wspace=0.2, hspace=0.25)
