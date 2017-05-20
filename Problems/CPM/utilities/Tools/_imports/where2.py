@@ -432,7 +432,7 @@ def prepare(m, settings = None):
   "Prepare the 'The' class"
   global The
   The = settings if settings else defaults().update(verbose = True,
-               minSize = int(len(m._rows) ** 0.5),
+               minSize = int(0.25 * (len(m._rows) ** 0.5)),
                prune = False,
                wriggle = 0.3)
   # print("stopping condition: ", int(len(m._rows)**0.5), len(m._rows), )
